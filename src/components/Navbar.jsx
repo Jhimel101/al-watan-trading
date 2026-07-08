@@ -232,7 +232,7 @@
 
 import { FiPhone, FiMenu } from "react-icons/fi";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -252,20 +252,46 @@ export default function Navbar() {
     return location.pathname === "/" ? `#${section}` : `/#${section}`;
   };
 
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    }
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    setOpen(false);
+  };
+
   return (
     <header className="fixed top-0 left-0 z-50 w-full">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mt-4 rounded-2xl border border-white/20 bg-white/80 backdrop-blur-xl shadow-lg">
           <div className="flex h-20 items-center justify-between px-6">
             {/* Logo */}
-            <Link to="/" className="cursor-pointer">
+            {/* <Link to="/" className="cursor-pointer">
               <h1 className="text-xl font-bold tracking-wide text-slate-900">
                 AL WATAN
               </h1>
               <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
                 AL ARABIAN TRADING EST.
               </p>
-            </Link>
+            </Link> */}
+            <div
+              onClick={handleLogoClick}
+              className="cursor-pointer select-none"
+            >
+              <h1 className="text-xl font-bold tracking-wide text-slate-900">
+                AL WATAN
+              </h1>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
+                AL ARABIAN TRADING EST.
+              </p>
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden items-center gap-8 md:flex">
