@@ -12,8 +12,7 @@ import Footer from "../components/Footer";
 import ProductCategories from "../components/ProductCategories";
 import Contact from "../components/Contact";
 import QuoteSection from "../components/QuoteSection";
-import Products from "../pages/Products";
-import Brands from "../components/brands";
+import Brands from "../components/BrandsTemp";
 import StickyMobileCTA from "../components/StickyMobileCTA";
 
 export default function Home() {
